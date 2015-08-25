@@ -13,7 +13,7 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         BinarySearch *search = [[BinarySearch alloc] init];
         
-        NSLog(@"%d", [search indexOfNumber:2 inSortedArray:@[@1, @2, @2, @3, @4, @5, @6]]);
+        NSLog(@"%d", [search indexOfNumber:7 inSortedArray:@[@1, @2, @2, @3, @4, @5, @6]]);
     }
     return 0;
 }

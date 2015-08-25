@@ -15,16 +15,16 @@
     
     NSArray *newArray;
     
-    if (number > [(NSNumber *)array[elementCount / 2] intValue]) {
+    if (number > [(NSNumber *)[array lastObject] intValue] || number < [(NSNumber *)[array firstObject] intValue]) {
+        return -1;
+    } else if (number > [(NSNumber *)array[elementCount / 2] intValue]) {
         newArray = [array subarrayWithRange:NSMakeRange((NSUInteger)elementCount/2, (NSUInteger)elementCount/2)];
         return elementCount/2 + [self indexOfNumber:number inSortedArray:newArray];
     } else if (number < [(NSNumber *)array[elementCount / 2] intValue]) {
         newArray = [array subarrayWithRange:NSMakeRange(0, (NSUInteger)elementCount/2)];
         return [self indexOfNumber:number inSortedArray:newArray];
-    } else if (number == [(NSNumber *)array[elementCount / 2] intValue]) {
-        return elementCount / 2;
     } else {
-        return -1;
+        return elementCount / 2;
     }
 }
 
