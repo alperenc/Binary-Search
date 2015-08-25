@@ -21,8 +21,10 @@
     } else if (number < [(NSNumber *)array[elementCount / 2] intValue]) {
         newArray = [array subarrayWithRange:NSMakeRange(0, (NSUInteger)elementCount/2)];
         return [self indexOfNumber:number inSortedArray:newArray];
-    } else {
+    } else if (number == [(NSNumber *)array[elementCount / 2] intValue]) {
         return elementCount / 2;
+    } else {
+        return -1;
     }
 }
 
