@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BinarySearch.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        BinarySearch *search = [[BinarySearch alloc] init];
+        
+        NSLog(@"%d", [search indexOfNumber:2 inSortedArray:@[@1, @2, @2, @3, @4, @5, @6]]);
     }
     return 0;
 }
