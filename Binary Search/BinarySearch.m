@@ -8,23 +8,32 @@
 
 #import "BinarySearch.h"
 
+@interface BinarySearch ()
+
+-(int)findIndexOfNumber:(int)number inSortedArray:(NSArray *)array withMin:(int)min andMax:(int)max;
+
+@end
+
 @implementation BinarySearch
 
--(int)indexOfNumber:(int)number inSortedArray:(NSArray *)array {
-    int elementCount = (int)array.count;
+-(int)findIndexOfNumber:(int)number inSortedArray:(NSArray *)array {
     
-    NSArray *newArray;
-    
-    if (number > [(NSNumber *)[array lastObject] intValue] || number < [(NSNumber *)[array firstObject] intValue]) {
+    return [self findIndexOfNumber:number inSortedArray:array withMin:0 andMax:(int)array.count - 1];
+}
+
+-(int)findIndexOfNumber:(int)number inSortedArray:(NSArray *)array withMin:(int)min andMax:(int)max {
+    if (max < min) {
         return -1;
-    } else if (number > [(NSNumber *)array[elementCount / 2] intValue]) {
-        newArray = [array subarrayWithRange:NSMakeRange((NSUInteger)elementCount/2, (NSUInteger)elementCount/2)];
-        return elementCount/2 + [self indexOfNumber:number inSortedArray:newArray];
-    } else if (number < [(NSNumber *)array[elementCount / 2] intValue]) {
-        newArray = [array subarrayWithRange:NSMakeRange(0, (NSUInteger)elementCount/2)];
-        return [self indexOfNumber:number inSortedArray:newArray];
     } else {
-        return elementCount / 2;
+        int mid = (min + max) / 2;
+        
+        if ([array[mid] intValue] > number) {
+            return [self findIndexOfNumber:number inSortedArray:array withMin:min andMax:mid-1];
+        } else if ([array[mid] intValue] < number) {
+            return [self findIndexOfNumber:number inSortedArray:array withMin:mid+1 andMax:max];
+        } else {
+            return mid;
+        }
     }
 }
 

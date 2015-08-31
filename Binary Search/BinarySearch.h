@@ -10,6 +10,6 @@
 
 @interface BinarySearch : NSObject
 
--(int)indexOfNumber:(int)number inSortedArray:(NSArray *)array;
+-(int)findIndexOfNumber:(int)number inSortedArray:(NSArray *)array;
 
 @end
