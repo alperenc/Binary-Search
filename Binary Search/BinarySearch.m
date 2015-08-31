@@ -16,6 +16,16 @@
 
 @implementation BinarySearch
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.firstIndex = -1;
+        self.numberOfOccurrences = 0;
+    }
+    return self;
+}
+
 -(int)findIndexOfNumber:(int)number inSortedArray:(NSArray *)array {
     
     return [self findIndexOfNumber:number inSortedArray:array withMin:0 andMax:(int)array.count - 1];
@@ -34,6 +44,32 @@
         } else {
             return mid;
         }
+    }
+}
+
+-(void)firstIndexAndNumberOfOccurrencesOfNumber:(int)number inSortedArray:(NSArray *)array {
+    int index = [self findIndexOfNumber:number inSortedArray:array];
+    if (index) {
+        self.firstIndex = index;
+        for (int i = index; i < array.count; i++) {
+            if ([array[i] intValue] == number) {
+                self.numberOfOccurrences++;
+            } else {
+                break;
+            }
+        }
+        
+        for (int i = index - 1; i > -1; i--) {
+            if ([array[i] intValue] == number) {
+                self.numberOfOccurrences++;
+                self.firstIndex = i;
+            } else {
+                break;
+            }
+        }
+    } else if (index == 0) {
+        self.firstIndex = index;
+        self.numberOfOccurrences++;
     }
 }
 

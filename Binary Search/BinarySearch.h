@@ -10,6 +10,13 @@
 
 @interface BinarySearch : NSObject
 
+@property (nonatomic, assign) int firstIndex;
+@property (nonatomic, assign) int numberOfOccurrences;
+
+- (instancetype)init;
+
 -(int)findIndexOfNumber:(int)number inSortedArray:(NSArray *)array;
+
+-(void)firstIndexAndNumberOfOccurrencesOfNumber:(int)number inSortedArray:(NSArray *)array;
 
 @end

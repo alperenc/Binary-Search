@@ -13,7 +13,15 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         BinarySearch *search = [[BinarySearch alloc] init];
         
-        NSLog(@"%d", [search findIndexOfNumber:2 inSortedArray:@[@1, @2, @2, @2, @3, @5, @6]]);
+        
+        int number = 2;
+        NSArray *array = @[@1, @2, @2, @2, @3, @5, @6];
+        
+        NSLog(@"%d", [search findIndexOfNumber:number inSortedArray:array]);
+        
+        [search firstIndexAndNumberOfOccurrencesOfNumber:2 inSortedArray:array];
+        
+        NSLog(@"Target number %d have %d occurrences in the array starting with index: %d.", number, search.numberOfOccurrences, search.firstIndex);
     }
     return 0;
 }
